@@ -1,0 +1,12 @@
+# Os namespaces são utilziados para agrupar recursos
+# O namespace padrão é o default sempre que um recurso é criado ele é 
+atribuido de forma implicita.
+
+- Listar namespaces
+kubectl get namespaces ou kubectl get ns
+
+- Criar namespace
+kubectl create namespace <NOME> --save-config
+
+- Alterar o namespace padrão
+kubectl config set-context --current --namespace=frontend

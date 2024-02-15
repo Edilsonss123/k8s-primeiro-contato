@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata: 
+  name: dameon-set-frontend-rs
+  labels:
+    app: frontend
+
+spec:
+  template:
+    metadata:
+      name: my-pod-webserver-dameon-set
+      labels:
+        apps: my-app
+        tier: frontend
+    spec:
+      containers:
+        - name: my-container-nginx
+          image: nginx
+      # nodeName: minikube-m02
+      # nodeSelector:
+      #   disktype: ssd
+  selector:
+    matchLabels:
+      apps: my-app

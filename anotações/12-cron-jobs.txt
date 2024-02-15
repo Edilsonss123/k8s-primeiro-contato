@@ -1,0 +1,1 @@
+#CronJob destina-se a executar ações agendadas regulares, como backups, geração de relatórios, e assim por diante

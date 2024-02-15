@@ -1,0 +1,36 @@
+# Responsável por realizar a implantação da aplicação
+    - Tipos de deploy(Recreate Strategy Type):     
+        - Rolling Updates -> sobe um novo pod, testa e em caso de sucesso subtituir de forma sequencia e sincrona cada pod com a atualização, 
+        iniciando sempre pelo pod menos utilizado no momento
+        - Recreate Deployment -> para todos os pods e recria novamente
+        - Rollback -> voltar ao estado anterior
+
+Por padrão o tipo "Rolling Updates" é o utilziado.
+    
+===================================================================================
+
+- Para ver o status de lançamento da implantação
+kubectl rollout status <DEPLOYMENT>
+
+- Status de lançamento da implantação do recurso
+kubectl rollout describer <DEPLOYMENT>
+
+- Historico da recurso
+kubectl rollout history <DEPLOYMENT> 
+    - para verificar um deploy especifico adcionar --revision=<REVISION>
+
+- Decrição do recurso criado
+kubectl describe <DEPLOYMENT>
+
+- Realizar o rollback do recurso para a versão anterior a versão atual
+kubectl rollout undo <DEPLOYMENT>
+    - para  realizar o rollback para uma versão especifica --to-revision=<REVISION>
+
+- Realizar a pausa do deploy em execução
+kubectl rollout pause <DEPLOYMENT>
+
+- Retoma o deploy pausado
+kubectl rollout resume <DEPLOYMENT>
+
+- Escalar deployment UP/DOWN
+kubectl scale <DEPLOYMENT>  --replicas=<QUANTIDADE SCALE>

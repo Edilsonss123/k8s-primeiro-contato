@@ -1,0 +1,5 @@
+#Tipos de Rede kubernetes - Pod to Pod Commnunication
+    - Intra Node Pod Network Commnunication
+       Pods compartilha o mesmo worker-node e o kubernetes virtualiza uma Virtual Bridge Network
+    - Inter Node Pod Network Commnunication
+        Pods executando em worker-node diferentes e o kubernetes virtualiza uma Virtual Bridge Network

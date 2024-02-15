@@ -1,0 +1,7 @@
+Usando autorização RBAC
+
+O controle de acesso baseado em função (RBAC) é um método de regular o acesso a computadores ou recursos de rede com base nas funções de usuários individuais em sua organização.
+
+A autorização RBAC usa o rbac.authorization.k8s.io Grupo de API para impulsionar a autorização decisões, permitindo configurar políticas dinamicamente por meio da API Kubernetes.
+
+Para habilitar o RBAC, inicie o servidor API com o --authorization-modesinalizador definido como uma lista separada por vírgulas que inclui RBAC; por exemplo: 

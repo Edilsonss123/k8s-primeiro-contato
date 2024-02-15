@@ -1,0 +1,3 @@
+Um ConfigMap é um objeto API usado para armazenar dados não confidenciais em pares chave-valor. 
+Os pods podem consumir ConfigMaps como variáveis ​​de ambiente, argumentos de linha de comando ou como arquivos de configuração em um volume. 
+Os ConfigMaps imutaveis não podem ter seus valores alterados após criação, um arquivo mutavel pode ser atualizado para imutavel mas o reverso não

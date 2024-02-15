@@ -1,0 +1,12 @@
+#Volumes:
+    - Diretórios utilizado pelos caontiner para armazenar arquivos
+    - suporta uma grande variedade de volumes a mais do docker
+    - utiliza volumes efêmeros(presente durante o ciclo de vida do pod) e volumes persistentes (dados presente mesmo após fim do ciclo de vida do pod)
+    - Tipos:
+        - empty Dir -> volume efêmeros que que suporta reinicio da máquina, muito utilizado para cache
+        - hostPath -> os volume são gravados em discos no worker-node, até a remoção do arquivo ou do worker-node
+        - tmpfs -> sistema de arquivo armazendo na memória, é rápido mas utiliza memória do container
+        - suporte aos volume: 
+            - protocols
+            - cloud providers
+            - storga plugins

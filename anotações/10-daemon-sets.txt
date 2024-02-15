@@ -1,0 +1,31 @@
+#Daemon-Sets:
+
+ - DaemonSet é um objeto Kubernetes que garante que uma cópia de um pod definido na configuração esteja sempre disponível em cada nó de trabalho em um cluster.
+ - Diferente do replicaset não é necessário informar a quantidade de replicas, o replicaset cria no mesmo cluster varios pods o daemonset é um pod por cluster
+ - Ao adicionar um novo node no cluster os pods do tipo DaemonSet dos demais nodes serão replicados para o novo node
+
+#DaemonSet Orphan Pods:
+ - por padrão o remover o recurso DaemonSet os pods gerenciados e replicados por ele serão removidos juntos, diferente do replicaset e deployment
+ - mas é possivel alterar esse comportamento utilizando "--cascade=orphan" nesse caso os pods não serão apagados
+ - é possivel vincular esses pods a um novo DaemonSet desde que o selector  seja o mesmo do recurso anterioramente deletado
+ - por padrão o daemonset cria pods em todos os nodes do cluster, mas é possivel especificar os nodes:
+    - utilizando através da label especificada no nodeSelector
+    - especificando o nome do node especificando no nodeName
+
+- Consultar DaemonSet criados
+kubectl get daemonset || kubectl get ds
+
+- Consultar em qual node o pod tá executando
+kubectl get pods -o wide --field-selector spec.nodeName={NOME NODE}
+
+- Remover DaemonSet
+kubectl delete ds {NOME RECURSO}
+
+- Remover DaemonSet
+kubectl delete ds {NOME RECURSO} 
+
+- Adicionar label a um node
+kubectl label node {NOME NODE} {NOMELABEL=VALORLABEL}
+
+- Remover label de um node
+kubectl label node {NOME NODE} {NOMELABEL}-

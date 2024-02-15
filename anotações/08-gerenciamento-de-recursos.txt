@@ -1,0 +1,16 @@
+#Genrenciamento de recursos:
+
+    - Requests:
+        - minimo de recursos para aplicação rodar
+        - requisitos por container e mão por pods
+        - o total de recursos do pod é a somátoria de todos os recursos necessários para aplicação rodar
+        - escalador do k8s atua para que os recursos dos pods não excedam os limites do cluster
+    
+    - Detalhes:
+        resources:
+            requests:
+                cpu: "500m"
+                memory: "128Mi"
+            limits:
+                cpu: "1000m"
+                memory: "256Mi"

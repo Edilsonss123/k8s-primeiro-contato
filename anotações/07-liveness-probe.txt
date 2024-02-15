@@ -1,0 +1,12 @@
+#Verificações de sanidades realizada pelo ks8 para verificar a disponibilidade do container.
+Por exemplo, vivacidade sondas podem pegar um impasse, onde um aplicativo está em execução, mas não consegue fazer progressos. Reiniciar um contêiner em tal estado pode ajudar a tornar o aplicativo mais disponível apesar dos bugs. 
+
+    - Detalhes:
+        livenessProbe:
+        exec: 
+            command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 5
+        periodSeconds: 5
+        failureThreshould: 3

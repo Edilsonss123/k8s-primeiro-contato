@@ -1,0 +1,4 @@
+- criar namespace
+- criar Deployment
+- criar service
+- com o service executando rodar: minikube service <NOME SERVIÇO> -n <NAMESPACE> --url para pegar a url de acesso via host

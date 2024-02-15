@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name:  my-cj
+spec:
+  suspend: false
+  failedJobsHistoryLimit: 5
+  successfulJobsHistoryLimit: 10
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      parallelism: 10
+      completions: 10
+      completionMode: "Indexed"
+      template:
+        spec:
+          containers:
+          - name: container-numero-loteria
+            image: busybox
+            command:
+              - "bin/sh"
+              - "-c"
+              - "for i in 1 2; do echo Licky number $i = $(( 1 + RANDOM % 70)); done"
+          restartPolicy: Never

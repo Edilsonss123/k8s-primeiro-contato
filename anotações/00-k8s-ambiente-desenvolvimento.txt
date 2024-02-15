@@ -1,0 +1,9 @@
+instalar minikube para gerenciar o ambiente ks8
+por padrão o minikube possui um node mas é possivel adicionar mais com o comando:
+- minikube node add {NOME NODE}
+
+- remover node
+minikube node delete {NOME NODE}
+Com o https://skaffold.dev/ é possivel criar o pipeline de integração continuo 
+https://www.youtube.com/watch?v=d90KOtJBiSw
+

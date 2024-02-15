@@ -1,0 +1,39 @@
+KIND = [
+    Pods, Replicasets, Deployments, Namespace
+];
+- adicionar um novo node ao cluster
+minikube node add {NOME NODE}
+
+- remover node
+minikube node delete {NOME NODE}
+
+- Criar novo recurso com uma imagem pronta
+kubectl run <NOME RECURSO> --image=<IMAGE>
+
+- Criar recurso a partir de um arquivo
+kubectl apply -f <FILE>
+
+- Lista todos os recursos do namespace
+kubectl get all
+
+- Listar os recursos criados
+kubectl get <KIND>
+
+- Listar os recursos criados para um namespace especifico
+kubectl get <KIND> -n <NAMESPACE>
+
+- Remover recurso
+kubectl delete <KIND> <NOME RECURSO>
+Para especificar o namespace --namespace=<NAMESPACE>
+
+- Escalar recursos UP/DOWN
+kubectl scale <KIND> <NOME RECURSO>  --replicas=<QUANTIDADE SCALE>
+
+- Entrar dentro do container do pod
+kubectl exec -it  <NOME POD> -- bash
+
+- url execução do serviço:
+minikube service <NOME SERVIÇO> -n <NAMESPACE> --url
+
+- alterar o namespace padrao
+kubectl config set-context --current --namespace=<NAMESPACE>

@@ -1,0 +1,23 @@
+#Recurso para criar e monitorar monitorar pods temporários
+    - ao executar a operação definida é encerrado
+    - ao excluir um job os pods criados por ele serão excluidos
+
+#Codigos de saida do container [0: 255]
+    - 0: container parado de forma proposital
+    - 1: erro da aplicação
+    - 126: comando executado de forma errada
+    - 127: arquivo ou diretorio não encontrado
+    - 134: container finalizado de forma inesperada
+    - 137: termino imediato, o container foi encerrado pelo SO
+    - 137: tentativa de acesso a recursos não atribudo
+    - 255: estato de saída fora do alcance(desconhecido)
+
+#Multiplas tarefas com jobs
+    - Informar o parametro:
+        - completions: {QUANTIDADE-TAREFAS}
+        - executará os pods especificados no jobs a quantidade especificado em completions
+#Permitir tarefas em paralelo
+    - Informar o parametro:
+        - parallelism: {QUANTIDADE-TAREFAS-PARALELAS}
+        - executará os pods em paralelo limitando a quantidade especificado em parallelism
+        - reduz o tempo de execução do pod

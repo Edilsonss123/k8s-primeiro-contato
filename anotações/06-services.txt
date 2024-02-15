@@ -1,0 +1,47 @@
+#Externaliza a comunição dos serviços do cluster com o ambiente exeterno
+    - Disponibilização de serviços:
+        - Cluster
+        - External
+
+#ClusterIP -> serviço padrão do ks8 utilizado para comunição interna do cluster, ele torna o serviço acessível somente dentro do cluster,
+para acessar de forma externa é necessária utilização de um proxy.
+
+Port: recurso para expor o serviço para consumo externo, parametro obrigatorio
+
+TargetPort: porta do serviço dentro do container, quando não informado será definiado o mesmo parametro de port
+
+Pods: não possui IP estático, toda vez que o pod é reiniciado ele poderá voltar com um novo IP, por isso os pods devem ser agrupados por serviço,
+o cliente da aplicação acessa o serviço, o serviço trata a parte de endereço IP para manter o serviço sempre disponivel indiferente dos pods
+
+- visualizar as service com mais informações
+kubectl get services --all-namespace -o wide
+
+- visualizar detalhes de uma service especifica
+kubectl describe services <NOME SERVICE>
+
+- deletar service, ao deletetar o serviço os pods atrelado continuam rodando sendo preciso realizar o delete direto neles
+kubectl delete services <NOME SERVICE>
+
+
+#NodePort -> permite abrir a aplicação para acesso externo(para o mundo)
+    - Detalhes:
+        - port: obrigatorio
+        - targetPort: opcional -> quando não informado será definiado o mesmo parametro de port
+        - nodePort: opcional -> quando não informado será definiado um valor aleatorio dentro do ranger[ 30000 - 32767 ]
+
+- Pegar url do serviço para acesso externo:
+minikube service --url <NOME SERVICO> --namespace=<NAMESPACE>
+kubectl get nodes -o yaml | grep address
+
+
+#LoadBalancer -> Expõe o serviço externamente usando um balanceador de carga externo
+    - Detalhes:
+        - port: obrigatorio
+        - targetPort: opcional -> quando não informado será definiado o mesmo parametro de port
+        - nodePort: opcional -> quando não informado será definiado um valor aleatorio dentro do ranger[ 30000 - 32767 ]
+
+#ExternalName -> Os serviços do tipo ExternalName mapeiam um serviço externo para um nome DNS, funcionando como uma camada de 
+adapter, quem chama não sabe o real caminho do serviço só espera receber um serviço valido, dessa forma o acesso fica centralizado
+e facilita eventuais de alterações de implementação.
+    - Detalhes:
+    externalName: dominico Servico

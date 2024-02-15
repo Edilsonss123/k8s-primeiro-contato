@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+
+kind: Job
+metadata:
+  name:  job-numero-loteria
+spec:
+  completions: 10
+  completionMode: "Indexed"
+  parallelism: 5
+  template:
+    metadata:
+      name:  pod-numero-loteria
+    spec:
+      containers:
+      - name: container-numero-loteria
+        image: busybox
+        command:
+          - "bin/sh"
+          - "-c"
+          - "for i in 1 2; do echo Licky number $i = $(( 1 + RANDOM % 70)); done"
+      restartPolicy: Never
